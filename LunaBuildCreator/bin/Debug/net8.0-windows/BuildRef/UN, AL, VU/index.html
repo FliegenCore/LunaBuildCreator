@@ -1,0 +1,54 @@
+<script>
+    try {
+        if (mraid.getState() === "loading") {
+            mraid.addEventListener("ready", mraidReadyHandler);
+        } else {
+            mraidReadyHandler();
+        }
+    } catch (e) {
+        if (e.name === "ReferenceError") {
+            window.addEventListener("DOMContentLoaded", domReadyHandler);
+        }
+    }
+
+    function domReadyHandler() {
+        window.removeEventListener("DOMContentLoaded", domReadyHandler);
+        window.dispatchEvent(new Event("luna:start"));
+    }
+
+    function mraidReadyHandler() {
+        mraid.removeEventListener("ready", mraidReadyHandler);
+        window.dispatchEvent(new Event("luna:start"));
+    }
+
+    function callSDK(urls) {
+        var userAgent = navigator.userAgent || navigator.vendor;
+        var isAndroid = /android/i.test(userAgent);
+        var url = isAndroid ? urls.androidUrl : urls.iosUrl;
+
+        try {
+            parent.postMessage("download", "*");
+            mraid.open && mraid.open(url);
+
+            console.log("completed");
+            parent.postMessage("completed", "*");
+        } catch (e) {
+            if (isAndroid) {
+                window.open(url, "_blank");
+            } else {
+                window.location.href = url;
+            }
+        }
+    }
+
+    window.addEventListener("luna:build", function () {
+        Bridge.ready(function () {
+            Luna.Unity.Playable.InstallFullGame = function (n, i) {
+                window.callSDK({
+                    iosUrl: n,
+                    androidUrl: i,
+                });
+            };
+        });
+    });
+</script>

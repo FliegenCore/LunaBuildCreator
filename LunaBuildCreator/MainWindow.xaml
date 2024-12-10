@@ -1,0 +1,59 @@
+﻿<Window x:Class="LunaBuildCreator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LunaBuildCreator"
+        mc:Ignorable="d"
+        Title="Danko builder" Height="600" Width="500" ResizeMode="NoResize">
+    <Grid>
+        <Image Source="/Src/images/logo.png" HorizontalAlignment="Center" VerticalAlignment="Top" Width="400"/>
+        <Button Height="50" Width="120" Click="Button_ChooseFile" HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="bt" Margin="0,140,0,0">
+            <TextBlock>
+                Choose html file
+            </TextBlock>
+        </Button>
+        <Button Height="50" Width="120" Click="Button_ChooseDirectory" HorizontalAlignment="Center">
+            <TextBlock>
+                Choose directory
+            </TextBlock>
+        </Button>
+        <Button Height="30" Width="60" Click="Button_OpenPath" HorizontalAlignment="Right" Margin="100" Name="OpenPathButton">
+            <TextBlock>
+                Open path
+            </TextBlock>
+        </Button>
+        <Button Height="100" Width="100"  Click="Button_CreateBuilds" VerticalAlignment="Bottom" Margin="20" Name="CreateBuildsButton">
+            <TextBlock>
+                Create builds
+            </TextBlock>
+        </Button>
+        <Button Height="50" Width="120"  Click="Button_ChooseImage" HorizontalAlignment="Center" VerticalAlignment="Top"  Margin="0,374,0,0">
+            <TextBlock>
+                Choose Image
+            </TextBlock>
+        </Button>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"  x:Name="ChooseFileText" Margin="0,119,0,0">
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,230,0,0" x:Name="ChooseDirectoryText">
+        </TextBlock>
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,58,0,0">
+            Название плеебла
+        </TextBlock>
+        <TextBox Width="400" Height="30" VerticalAlignment="Top" Margin="0,79,0,0" x:Name="PlayableName">
+        </TextBox>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"  x:Name="ImageDirection" Margin="0,353,0,0">
+        </TextBlock>
+
+        <Button Height="30" Width="60" Click="Button_OpenAlUrl" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,100,20" Name="OpenAlChech">
+            <TextBlock>
+                Check AL 
+            </TextBlock>
+        </Button>
+        <Button Height="30" Width="60" Click="Button_OpenMvUrl" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,24,20" Name="OpenMvChech">
+            <TextBlock>
+        Check MV
+            </TextBlock>
+        </Button>
+    </Grid>
+</Window>
